@@ -22,3 +22,18 @@ Input: nums = [3,3], target = 6
 Output: [0,1]
 
 **/
+
+const twoSum = function combiningIndicesIntoTarget(nums, target) {
+    const length = nums.length;
+    for (let i = 0; i < length; i += 1) {
+        for (let j = i + 1; j < length; j += 1) {
+            if (nums[i] + nums[j] === target) {
+                return [i, j];
+            }
+        }
+    }
+    return [];
+};
+
+console.log(twoSum([2, 7, 11, 15], 9)); // Output: [0,1]
+console.log(twoSum([3, 2, 4], 6)); // Output: [1,2]
