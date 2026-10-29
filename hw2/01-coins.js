@@ -2,7 +2,7 @@
 
 /* eslint-disable no-console */
 
-function calculateChange(amount) {
+const change = function calculateChange(amount) {
   // If amount is larger than 100, return an error message
   if (amount > 100) {
     return 'Error: the number is too large';
@@ -46,20 +46,25 @@ function calculateChange(amount) {
     coins.pennies = Math.floor(remainder);
   }
 
-  return coins;
-}
+  // Return as amount cointype, e.g., "$4.62 ==> 4 dollars, 2 quarters, 1 dime, 2 pennies"
+  const ans = Object.entries(coins)
+    .map(([coin, count]) => `${count} ${coin}`)
+    .join(', ');
+
+  return ans;
+};
 
 // Sample test cases
-console.log(calculateChange(4.62));
+console.log(change(4.62));
 // $4.62 ==> 4 dollars, 2 quarters, 1 dime, 2 pennies
-console.log(calculateChange(0.16));
+console.log(change(0.16));
 // $0.16 ==> 1 dime, 1 nickel, 1 penny
-console.log(calculateChange(150.11));
+console.log(change(150.11));
 // $150.11 ==> Error: the number is too large
 
 // Add additional test cases here
-console.log(calculateChange(0.99));
-console.log(calculateChange(100));
-console.log(calculateChange(0.01));
-console.log(calculateChange(0.00));
-console.log(calculateChange(1.41));
+console.log(change(0.99));
+console.log(change(100));
+console.log(change(0.01));
+console.log(change(0.00));
+console.log(change(1.41));
